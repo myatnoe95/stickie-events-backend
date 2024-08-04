@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id')->constrained('users');
-            // $table->foreignId('event_id')->constrained('events');
             $table->unsignedBigInteger('user_id');   
             $table->unsignedBigInteger('event_id');
             $table->string('photo_url');
-            $table->enum('status', ['Approved', 'Pending', 'Rejected']);
+            $table->enum('status', ['Approved', 'Pending', 'Rejected'])->default('Pending')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
