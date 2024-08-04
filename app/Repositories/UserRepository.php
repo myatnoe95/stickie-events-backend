@@ -24,7 +24,6 @@ class UserRepository implements UserInterface{
 		}
 
         $user   = new User();
-
         $userDBT  = DB::transaction(function () use ($user, $request) {
             $request->password = Hash::make($request->password);
             $user->fill($request->toArray())->save();

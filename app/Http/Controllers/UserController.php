@@ -108,6 +108,4 @@ class UserController extends Controller
         }
         return $this->sendResponse(new UserResource($user));
     }
-
-
 }
